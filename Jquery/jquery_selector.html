@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Selector</title>
+    <style>
+      #img {
+        width: 500px;
+      }
+      button {
+        margin: 20px 10px;
+        padding: 10px 10px;
+        font-size: large;
+        border-radius: 3px;
+      }
+      #img {
+        display: none;
+      }
+      .box {
+        background-color: black;
+        width: 100px;
+        height: 100px;
+        border-radius: 300px;
+        border: 10px solid red;
+        position: relative;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <button id="showBtn">Show</button>
+      <button id="hideBtn">Hide</button>
+      <button id="toggleBtn">toggle</button>
+    </div>
+    <img src="./images/img1.png" id="img" />
+
+    <div class="container">
+      <button class="animationBtn">Animation</button>
+      <button class="stop">Stop</button>
+     <button class="chaging">chaging</button>
+      <div class="box"></div>
+      <h1 class="code">CODE LAB</h1>
+    </div>
+    
+  </body>
+  <script src="./jquery.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
+  <script>
+    $(document).ready(function () {
+        $("#showBtn").click(function () {
+            $("#img").show(1000);
+        });
+        $("#hideBtn").click(function () {
+            $("#img").hide(1000);
+        });
+        $("#toggleBtn").click(function () {
+            $("#img").slideToggle(1000);
+        });
+
+        $(".animationBtn").click(function () {
+            $(".box").animate(
+            { left: "250px", top: "250px", height: "+=50px", width: "+=50px" },
+            2000,
+            function () {
+                // $("#img").show(1000);
+            }
+            );
+        });
+
+        $(".stop").click (function(){
+            $(".box").stop();
+        });
+
+        $(".chaging").click(function(){
+            $(".code").css("color","blue").show(2000).hide(2000);
+        });
+        
+    });
+  </script>
+</html>

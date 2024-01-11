@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping API</title>
+
+    <style>
+        body {
+            margin: 0px 0px;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            margin: 15px 20px;
+        }
+        .table {
+            width: 60%;
+            border-collapse: collapse;
+            border: 1px solid rgb(236, 236, 236);
+            
+
+        }
+        .table tbody tr:nth-child(odd){
+            background-color: hsl(0, 0%, 95%);
+        }
+        .table tbody tr:hover{
+            background-color: hsl(0, 0%, 91%);
+        }
+
+        .table thead tr {
+            background-color: rgb(255, 158, 158);
+            color: white;
+        }
+
+        .table tr,
+        .table th,
+        .table td {
+            padding: 8px 20px;
+        }
+        
+        
+        .image {
+            width: 50px;
+            text-align: center;
+        }
+        .page {
+            text-align: left;
+            padding: 3px 5px;
+        }
+        .card {
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+
+        }
+        .card-body{
+            width: 60%;
+            display: flex;  
+            border: 1px solid rgb(210, 210, 210);
+            box-shadow: 3px 3px 5px rgba(198, 198, 198, 0.5); 
+            justify-content: space-evenly;
+            margin-left: 300px;
+            
+                    
+        }
+        .card-body img {
+            width: 190px;
+        }        
+        .api_img {
+            padding: 10px 0px;
+           
+        }
+        .info {
+            padding-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card" id="card"> </div>
+
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr >
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Price</th>
+                    <th>Rate</th>
+                    <th>Image</th>
+               </tr>
+            </thead>
+            <tbody id="page"> </tbody>
+        </table>
+    </div>
+    
+
+</body>
+    <script>
+        let page = document.getElementById("page");
+        let list ="";
+        let card =document.getElementById("card");
+        card.style.display= "none";
+
+
+        fetch('https://fakestoreapi.com/products')
+            .then(response=>response.json())
+            .then(result=> {
+                console.log(result);
+                for ( let i = 0; i < result.length; i++) {
+                 list += ` <tr onclick="detail(${result[i].id})">
+                    
+                    <td>${result[i].id}</td>
+                    <td>${result[i].title}</td>
+                    <td>${result[i].price}$</td>
+                    <td>${result[i].rating.rate}</td>
+                    <td >
+                        <a href= " ${result[i].image}" target= "_blank"> <img src="${result[i].image}" class="image" ></a>
+                        </td>
+                    
+                </tr>`;
+                }
+                page.innerHTML=list;
+    
+            });
+            
+            function detail(id) {
+                // console.log(id);
+                fetch ("https://fakestoreapi.com/products/" + id )
+                .then ((response)=> response.json())
+                .then ((data)=> {
+                    // console.log(data);
+                  card.innerHTML= ` 
+                  <div class="card-body">
+                        <img src="${data.image}" class="api_img">
+                        <div class="info">
+                            <h3>${data.title}</h3>
+                            <h4>${data.price}$</h4>
+                            <h4>${data.rating.rate}</h4>
+                        </div>
+                    </div>`; 
+                    card.style.display= "block";
+
+                });
+            }
+    
+    </script>
+
+</html>

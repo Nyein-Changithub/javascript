@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .myList{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    
+    <ul class="myList">
+        <li>orange</li>
+        <li>apple</li>
+    </ul>
+
+</body>
+<script src="./jquery.min.js"></script>
+<script>
+
+    $(document).ready(function(){
+        // $('.myList').append('<li>one</li>');
+        // $('.myList').append('<li>Two</li>');
+
+        $('.myList').prepend('<li>one</li>');
+        $('.myList').prepend('<li>Two</li>');
+
+        // $('.myList').after('<p>Hello</p>');
+        // $('.myList').before('<p>how are you </p>');
+
+        // $('.myList').remove();
+        // $('.myList').empty();
+
+
+    });
+</script>
+</html>

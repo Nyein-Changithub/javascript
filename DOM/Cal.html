@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator Project</title>
+
+    <style>
+        body {
+            background-color: rgb(235, 235, 235)
+        }
+       .content {
+        background-color:white;
+        width: 350px;
+        height:380px;
+        margin:auto;
+        margin-top :30px;
+        border-radius: 30px;
+        border:1px solid lightblue;
+        padding:20px;
+       }
+
+       .title {
+        background-color:white;
+        text-align: center;
+        padding-bottom: 10px;
+        font-weight: bold;
+       }
+
+       .fnum{
+        background-color:white;
+        width: 100%;
+        padding :10px 5px;
+        border-radius: 6px;
+        margin:5px 0px;
+        display:inline-block;
+        box-sizing: border-box;
+        
+
+       }
+       .secnum{
+        background-color:white;
+        width: 100%;
+        padding :10px 5px;
+        border-radius: 6px;
+        margin:5px 0px;
+        display:inline-block;
+        box-sizing: border-box;
+       }
+       .Operators{
+        background-color:white;
+        width: 100%;
+        padding :10px 5px;
+        border-radius: 6px;
+        margin:5px 0px;
+        display:inline-block;
+        box-sizing: border-box;
+       }
+
+       .calculatebtn{
+        background-color: rgb(49, 243, 49);
+        color: white;
+        width: 100%;
+        padding : 5px 5px;
+        margin :10px 3px;
+        border-radius: 6px;
+       }
+       
+       .result {
+        margin-bottom: 10px;
+        padding :5px 5px;
+        text-align:end;
+        background-color: black;
+        color: white;
+       }
+       .input-group1{
+        margin-bottom: 4px;
+       }
+       .input-group2{
+        margin-bottom: 4px;
+       }
+       .input-group3{
+        margin-bottom: 4px;
+       }
+
+       .label {
+        margin:auto;
+       }
+       .error{
+        padding:3px 0px;
+        color: red;
+       }
+       
+    </style>
+</head>
+<body>
+
+    <div class="content">
+        <form action="/action_page.php">
+            <div class="title">Calculator Project</div>
+
+           <div class="result" id="result">0</div> 
+          
+            <div class="input-group1">
+                <label for="fnum" class="label">Number One :</label>
+                <input type="text" class="fnum" id="fnum" placeholder="Enter Your Number...">
+                <small class="error" id="numOneError">Number one is required!</small>
+            </div>
+      
+          <div class="input-group2">
+                <label for="lnum" class="label">Number Two :</label>
+                <input type="text" class="secnum" id="secnum" placeholder="Enter Your Number...">  
+                <small class="error" id="numTwoError">Number Two is required!</small>
+            </div>
+
+            <div class="input-group3">
+                <label for="Operators" class="label">Operators</label>
+                <select class="Operators" id="Operators" >
+                <option value="empty">Choose operator...</option>
+                <option value="add">+</option>
+                <option value="minus">-</option>
+                <option value="multiply">*</option>]
+                <option value="division">/</option>
+                </select>
+                <small class="error" id="OperatorError"> Operator is required!</small>
+            </div>
+
+            <button type="button" id="calculatebtn" class="calculatebtn">Register</button>
+
+        </form>
+    </div>
+</body>
+<script src="./cal.js"></script>
+</html>
